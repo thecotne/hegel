@@ -4,17 +4,20 @@ import commonjs from '@rollup/plugin-commonjs';
 import builtinModules from 'builtin-modules';
 
 export default {
-  input: 'src/server.js',
+  input: 'src/client/client.js',
   output: {
     format: 'cjs',
-    file: 'build/server.js'
+    file: 'build/client.js',
   },
-  external: [...builtinModules, "vscode"],
+  external: [
+    ...builtinModules,
+    'vscode'
+  ],
   plugins: [
     resolve({
-      preferBuiltins: true,
+      preferBuiltins: true
     }),
     commonjs(),
     babel({ babelHelpers: 'bundled' })
-  ],
+  ]
 };
